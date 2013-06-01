@@ -1,0 +1,35 @@
+<div ng-app="comicsApp">
+  <div ng-controller="ItemsCtrl">
+
+    <div class="bar">
+      <input type="text" ng-model="query" class="search">
+
+      <div class="order">
+        <span>Ordernar: </span>
+        <select ng-model="orderProp">
+          <option value="titulo">Alfab&eacute;tica</option>
+          <option value="published_at">Recentes</option>
+        </select>
+      </div>
+
+    </div>
+
+
+    <ul class="images">
+      <li ng-repeat="item in items | filter:query | orderBy:orderProp">
+        <div class="info">
+          <img ng-src="{{item.image_url}}" class="image" />
+          <div class="details">
+            <p><strong>T&iacute;tulo:</strong>{{item.title}}</p>
+            <p><strong>Descri&ccedil;&atilde;o:</strong>{{item.description}}</p>
+            <p><strong>Editora:</strong>{{item.publisher}}</p>
+            <p><strong>Publicado em:</strong>{{item.published_at}}</p>
+            <span class="price">{{item.price}}</span>
+          </div>
+          <div class="add_cart">Comprar</div>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</div>
